@@ -76,7 +76,8 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
-            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1rem ;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -87,12 +88,14 @@
             background: none;
             border: none;
             width: 2rem;
-            height: 2rem;
+            height: 2.2rem;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
             padding: 0.25rem;
+            margin: 0.5rem 0;
+
         }
 
         .hamburger span {
@@ -116,7 +119,7 @@
         }
 
         .site-title {
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
@@ -214,18 +217,18 @@
         /* Intro Section */
         .intro-section {
             text-align: center;
-            padding: 4rem 0;
+            padding: 2rem 0;
             background: white;
             color: black;
             border-radius: 1rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1.5rem;
             position: relative;
             overflow: hidden;
         }
 
         .intro-title {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: 800;
             margin-bottom: 1rem;
             position: relative;
             z-index: 1;
@@ -311,11 +314,12 @@
             height: 3rem;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             border-radius: 0.5rem;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            margin-right: 1rem;
         }
 
         .subject-title {
@@ -323,6 +327,8 @@
             font-weight: 600;
             margin-bottom: 0.5rem;
             color: var(--text-primary);
+            display: inline;
+
         }
 
         .subject-description {
@@ -340,7 +346,7 @@
         }
 
         .download-btn {
-            background: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); 
             color: white;
             border: none;
             padding: 0.5rem 1rem;
@@ -821,7 +827,7 @@
             }
 
             .intro-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             .subjects-grid {
