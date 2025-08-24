@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Download free student notes for Tamil, English, Statistics, Java, HTML and more.">
     <title>Notes Dock</title>
+    <link rel="icon" href="/NotesDock/frontend/assets/logo.png">
     
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -91,11 +92,12 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    
 }
 
 .header-logo {
-    width: 40px;
-    height: 40px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
 }
 
@@ -104,17 +106,16 @@
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
-
-
-        .header-nav {
+    .header-nav {
     display: flex;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
 }
 .header-nav a {
     color: var(--text-primary);
     text-decoration: none;
     font-weight: 500;
+    font-size: 1.2rem;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     transition: all 0.3s ease;
@@ -125,8 +126,8 @@
     color: var(--primary-color);
 }
     
-        .site-title {
-    font-size: 2rem;
+    .site-title {
+    font-size: 1.7rem;
     font-weight: 700;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
@@ -754,8 +755,8 @@
     }
     
     .header-logo{
-        width: 60px;
-        height: 50px;
+        width: 24px;
+        height: 24px;
     }
     .site-title {
         font-size: 1.5rem;
@@ -767,7 +768,7 @@
     
     .header-nav a {
         padding: 0.25rem 0.75rem;
-        font-size: 0.9rem;
+        font-size: 1.1rem;
     }
 
     .main-content {
@@ -1212,7 +1213,7 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3 id="about"><i class="fa-solid fa-circle-info"></i> About Us</h3>
+                    <h3 id="about" ><i class="fa-solid fa-circle-info" style="margin-right: 0.5rem;"></i> About Us</h3>
                     <p>Download comprehensive study notes and excel in your academic journey.We built Notes Dock with a simple yet powerful mission: to make learning smarter,
                         sharing easier, and knowledge accessible to everyone.
                     </p>
@@ -1236,7 +1237,7 @@
                 </div>
 
                 <div class="footer-column">
-                    <h3 id="contact"> <i class="fa-regular fa-address-book"></i>  Contact Info</h3>
+                    <h3 id="contact"> <i class="fa-regular fa-address-book" style="margin-right: 0.5rem;"></i>Contact Info</h3>
                     <div class="footer-contact">
                         <a href="mailto:info@noteshub.com" class="footer-contact-item">
                             <span class="footer-contact-icon">
