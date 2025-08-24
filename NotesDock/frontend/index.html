@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,7 +42,7 @@
         }
 
         /* Dark mode toggle button */
-        /* .dark-mode-toggle {
+       /* .dark-mode-toggle {
             position: absolute;
             top: 50%;
             right: 1rem;
@@ -142,17 +141,9 @@
             animation: slideInLeft 0.8s ease-out both;
         }
 
-        .form-group:nth-child(1) {
-            animation-delay: 1s;
-        }
-
-        .form-group:nth-child(2) {
-            animation-delay: 1.2s;
-        }
-
-        .form-group:nth-child(3) {
-            animation-delay: 1.4s;
-        }
+        .form-group:nth-child(1) { animation-delay: 1s; }
+        .form-group:nth-child(2) { animation-delay: 1.2s; }
+        .form-group:nth-child(3) { animation-delay: 1.4s; }
 
         .form-label {
             font-size: 0.875rem;
@@ -263,7 +254,7 @@
             .main-content {
                 padding: 3rem 2rem;
             }
-
+            
             .selection-title {
                 font-size: 2.5rem;
             }
@@ -286,7 +277,7 @@
         }
 
         /* Dark mode styles */
-        /*  body.dark-mode {
+      /*  body.dark-mode {
             background-color: #111827;
             color: #f9fafb;
         }
@@ -366,7 +357,6 @@
             from {
                 opacity: 0;
             }
-
             to {
                 opacity: 1;
             }
@@ -377,7 +367,6 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -389,7 +378,6 @@
                 opacity: 0;
                 transform: scale(0.8);
             }
-
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -401,7 +389,6 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -413,7 +400,6 @@
                 opacity: 0;
                 transform: translateX(-30px);
             }
-
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -425,16 +411,13 @@
                 opacity: 0;
                 transform: scale(0.3) translateY(20px);
             }
-
             50% {
                 opacity: 1;
                 transform: scale(1.05) translateY(-5px);
             }
-
             70% {
                 transform: scale(0.98) translateY(2px);
             }
-
             100% {
                 opacity: 1;
                 transform: scale(1) translateY(0);
@@ -443,7 +426,6 @@
 
         /* Reduce animations for users who prefer reduced motion */
         @media (prefers-reduced-motion: reduce) {
-
             *,
             *::before,
             *::after {
@@ -454,10 +436,9 @@
         }
     </style>
 </head>
-
 <body>
     <!-- Header -->
-
+     
     <header class="header">
         <!-- <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button> -->
         <h1 class="site-title">Notes Dock</h1>
@@ -471,7 +452,7 @@
                 <p class="selection-subtitle">Select your department, year, and semester to access study materials</p>
             </div>
 
-            <form class="selection-form" id="selection-form">
+            <form class="selection-form"  id="selection-form" >
                 <div class="form-group">
                     <label for="department" class="form-label">Department</label>
                     <select id="department" name="department" class="form-select" required>
@@ -522,11 +503,11 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 Notes Hub. All rights reserved. | <a href="#contact">Contact Us</a></p>
+        <p>&copy; 2025 Notes Dock. All rights reserved.</p>
     </footer>
 
     <script>
-        (function () {
+        (function() {
             'use strict';
 
             // DOM Elements
@@ -610,7 +591,7 @@
             //     const isDark = document.body.classList.contains('dark-mode');
             //     localStorage.setItem('theme', isDark ? 'dark' : 'light');
             //     darkModeToggle.textContent = isDark ? '☀️' : '🌙';
-
+                
             //     // Debug log
             //     console.log('Dark mode toggled:', isDark);
             // }
@@ -621,7 +602,7 @@
             // function initializeDarkMode() {
             //     const savedTheme = localStorage.getItem('theme');
             //     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
+                
             //     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
             //         document.body.classList.add('dark-mode');
             //         darkModeToggle.textContent = '☀️';
@@ -629,7 +610,7 @@
             //         document.body.classList.remove('dark-mode');
             //         darkModeToggle.textContent = '🌙';
             //     }
-
+                
             //     // Debug log
             //     console.log('Dark mode initialized:', document.body.classList.contains('dark-mode'));
             // }
@@ -639,16 +620,16 @@
             departmentSelect.addEventListener('change', updateSubmitButton);
             yearSelect.addEventListener('change', updateSubmitButton);
             semesterSelect.addEventListener('change', updateSubmitButton);
-
+            
             // Multiple event listeners for dark mode toggle to ensure it works
-            darkModeToggle.addEventListener('click', function (e) {
+            darkModeToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 console.log('Dark mode button clicked!');
                 toggleDarkMode();
             });
-
-            darkModeToggle.addEventListener('touchstart', function (e) {
+            
+            darkModeToggle.addEventListener('touchstart', function(e) {
                 e.preventDefault();
                 toggleDarkMode();
             });
@@ -666,7 +647,7 @@
             // });
 
             // Keyboard navigation improvements
-            document.addEventListener('keydown', function (e) {
+            document.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' && document.activeElement.tagName === 'SELECT') {
                     // Allow enter key to open select dropdowns
                     e.preventDefault();
@@ -677,5 +658,4 @@
         })();
     </script>
 </body>
-
 </html>
