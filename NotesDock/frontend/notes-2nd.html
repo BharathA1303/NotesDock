@@ -102,6 +102,25 @@
     align-items: center;
     transition: all 0.3s ease;
 }
+        .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.header-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Optional: Add hover effect */
+.header-brand:hover .header-logo {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+
         .header-nav {
     display: flex;
     gap: 2rem;
@@ -120,18 +139,7 @@
     background: var(--bg-secondary);
     color: var(--primary-color);
 }
-
-        /* .site-title {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        } */
+    
         .site-title {
     font-size: 2rem;
     font-weight: 700;
@@ -929,16 +937,25 @@
 </head>
 
 <body>
-    <a href="#main-content" class="sr-only focusable">Skip to content</a>
-
-
+    <!-- <a href="#main-content" class="sr-only focusable">Skip to content</a>
     <header class="header">
     <h1 class="site-title">Notes Dock</h1>
     <nav class="header-nav">
         <a href="#about"><b>About</b></a>
         <a href="#contact"><b>Contact</b></a>
         <a href="#" onclick="openAdminModal(); return false;"><span class="footer-contact-icon"><i class="fa-solid fa-user-tie"></i></span>   <b>  Admin</b></a>
+    </nav> -->
+    <header class="header">
+    <div class="header-brand">
+        <img src="/NotesDock/logo.jpg" alt="Notes Dock Logo" class="header-logo">
+        <h1 class="site-title">Notes Dock</h1>
+    </div>
+    <nav class="header-nav">
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#" onclick="openAdminModal(); return false;">Admin</a>
     </nav>
+</header>
 </header>
 
 
