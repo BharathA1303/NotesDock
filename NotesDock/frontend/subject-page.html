@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Download free student notes for Tamil, English, Statistics, Java, HTML and more.">
-    <title>Subject Units - Notes Dock</title>
+    <title>Notes Dock</title>
     <link rel="icon" href="/NotesDock/frontend/assets/logo.png">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -60,13 +60,14 @@
             transition: all 0.3s ease;
         }
 
-      .header-brand {
+        .header-brand {
             display: flex;
             align-items: center;
             gap: 0.75rem;
 
         }
-         .header-nav {
+
+        .header-nav {
             display: flex;
             gap: 1rem;
             align-items: center;
@@ -282,7 +283,8 @@
             display: block;
             margin-bottom: 0.25rem;
         }
-.site-footer {
+
+        .site-footer {
             background: linear-gradient(135deg, #1f2937, #111827);
             color: white;
             margin-top: 4rem;
@@ -542,6 +544,13 @@
             .site-title {
                 font-size: 1.5rem;
             }
+            .header-nav {
+                gap: 1rem;
+            }
+            .header-nav a {
+                padding: 0.25rem 0.75rem;
+                font-size: 1.1rem;
+            }
 
             .main-content {
                 padding: 1rem;
@@ -639,7 +648,7 @@
     </header>
 
     <main class="main-content">
-      
+
 
         <!-- Subject Header -->
         <div class="subject-header">
@@ -1186,45 +1195,45 @@
         </div>
     </main>
     <!-- Site Footer -->
-        <footer class="site-footer">
-            <div class="footer-content">
-                <div class="footer-grid">
-                    <div class="footer-column">
-                        <h3 id="about"><i class="fa-solid fa-circle-info" style="margin-right: 0.5rem;"></i> About Us</h3>
-                        <p>Download comprehensive study notes and excel in your academic journey.We built Notes Dock with a
-                            simple yet powerful mission: to make learning smarter,
-                            sharing easier, and knowledge accessible to everyone.
-                        </p>
-                    </div>
-
-                    <div class="footer-column">
-                        <h3 id="contact"> <i class="fa-regular fa-address-book" style="margin-right: 0.5rem;"></i>Contact
-                            Info</h3>
-                        <div class="footer-contact">
-                            <a href="mailto:info@noteshub.com" class="footer-contact-item">
-                                <span class="footer-contact-icon">
-                                    <i class="fa-solid fa-envelope fa-beat"></i>
-                                </span>
-                                notesdock143@gmail.com
-                            </a>
-                            <a href="https://instagram.com/noteshub" class="footer-contact-item">
-                                <span class="footer-contact-icon">
-                                    <i class="fa-brands fa-instagram fa-beat"></i>
-                                </span>
-                                notes_dock_ig
-                            </a>
-
-
-                        </div>
-                    </div>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 id="about"><i class="fa-solid fa-circle-info" style="margin-right: 0.5rem;"></i> About Us</h3>
+                    <p>Download comprehensive study notes and excel in your academic journey.We built Notes Dock with a
+                        simple yet powerful mission: to make learning smarter,
+                        sharing easier, and knowledge accessible to everyone.
+                    </p>
                 </div>
 
-                <div class="footer-bottom">
-                    <p>⏰ 24/7 Support Available</p>
-                    <p>&copy; 2025 Notes Dock. All rights reserved.</p>
+                <div class="footer-column">
+                    <h3 id="contact"> <i class="fa-regular fa-address-book" style="margin-right: 0.5rem;"></i>Contact
+                        Info</h3>
+                    <div class="footer-contact">
+                        <a href="mailto:info@noteshub.com" class="footer-contact-item">
+                            <span class="footer-contact-icon">
+                                <i class="fa-solid fa-envelope fa-beat"></i>
+                            </span>
+                            notesdock143@gmail.com
+                        </a>
+                        <a href="https://instagram.com/noteshub" class="footer-contact-item">
+                            <span class="footer-contact-icon">
+                                <i class="fa-brands fa-instagram fa-beat"></i>
+                            </span>
+                            notes_dock_ig
+                        </a>
+
+
+                    </div>
                 </div>
             </div>
-        </footer>
+
+            <div class="footer-bottom">
+                <p>⏰ 24/7 Support Available</p>
+                <p>&copy; 2025 Notes Dock. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
 
     <script>
@@ -1260,7 +1269,7 @@
                 totalFiles: 10,
                 totalPages: 242
             }
-        };   
+        };
 
 
         // Initialize the page
