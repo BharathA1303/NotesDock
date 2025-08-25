@@ -60,13 +60,34 @@
             transition: all 0.3s ease;
         }
 
-        .header-brand {
+      .header-brand {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            text-decoration: none;
-            color: inherit;
+
         }
+         .header-nav {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .header-nav a:hover {
+            background: var(--bg-secondary);
+            color: var(--primary-color);
+        }
+
+
 
         .header-logo {
             width: 28px;
@@ -74,6 +95,7 @@
             object-fit: contain;
         }
 
+        /* Optional: Add hover effect */
         .header-brand:hover .header-logo {
             transform: scale(1.05);
             transition: transform 0.3s ease;
@@ -209,6 +231,158 @@
             color: var(--text-primary);
         }
 
+        /* Footer Sections */
+        .footer-sections {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 3rem;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        .footer-section {
+            padding: 3rem 2rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .footer-section:last-child {
+            border-bottom: none;
+        }
+
+        .footer-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            color: #6b7280;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 8px;
+            border-left: 4px solid #2563EB;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-item strong {
+            color: #1f2937;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+.site-footer {
+            background: linear-gradient(135deg, #1f2937, #111827);
+            color: white;
+            margin-top: 4rem;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #f9fafb;
+        }
+
+        .footer-column p {
+            color: #d1d5db;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .social-link:hover {
+            background: rgba(37, 99, 235, 0.8);
+            border-color: rgba(37, 99, 235, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-contact-item:hover {
+            color: #2563EB;
+        }
+
+        .footer-contact-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            font-size: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+
         /* Units Grid */
         .units-grid {
             display: grid;
@@ -323,11 +497,25 @@
         }
 
         /* Subject-specific colors */
-        .tamil .unit-icon { background: linear-gradient(135deg, #ff6b6b, #ffa500); }
-        .english .unit-icon { background: linear-gradient(135deg, #4ecdc4, #44a08d); }
-        .statistics .unit-icon { background: linear-gradient(135deg, #667eea, #764ba2); }
-        .java .unit-icon { background: linear-gradient(135deg, #f093fb, #f5576c); }
-        .html .unit-icon { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+        .tamil .unit-icon {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+        }
+
+        .english .unit-icon {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+        }
+
+        .statistics .unit-icon {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .java .unit-icon {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .html .unit-icon {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        }
 
         /* Hidden sections */
         .subject-section {
@@ -407,11 +595,25 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        .unit-card:nth-child(1) { animation-delay: 0.1s; }
-        .unit-card:nth-child(2) { animation-delay: 0.2s; }
-        .unit-card:nth-child(3) { animation-delay: 0.3s; }
-        .unit-card:nth-child(4) { animation-delay: 0.4s; }
-        .unit-card:nth-child(5) { animation-delay: 0.5s; }
+        .unit-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .unit-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .unit-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .unit-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .unit-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
 
         @keyframes fadeInUp {
             to {
@@ -424,25 +626,20 @@
 
 <body>
     <header class="header">
-        <a href="notes-2nd.html" class="header-brand">
+        <div class="header-brand">
             <img src="/NotesDock/frontend/assets/logo.png" alt="Notes Dock Logo" class="header-logo">
             <h1 class="site-title">Notes Dock</h1>
-        </a>
+        </div>
+        <nav class="header-nav">
+            <a href="#about"><b>About</b></a>
+            <a href="#contact"><b>Contact</b></a>
+            <a href="#" onclick="openAdminModal(); return false;"><span class="footer-contact-icon"><i
+                        class="fa-solid fa-user-tie"></i></span><b> Admin</b></a>
+        </nav>
     </header>
 
     <main class="main-content">
-        <!-- Navigation Section -->
-        <div class="nav-section">
-            <a href="notes-2nd.html" class="back-btn">
-                <i class="fas fa-arrow-left"></i>
-                Back to Subjects
-            </a>
-            <div class="breadcrumb">
-                <a href="notes-2nd.html">Home</a>
-                <i class="fas fa-chevron-right"></i>
-                <span id="current-subject">Units</span>
-            </div>
-        </div>
+      
 
         <!-- Subject Header -->
         <div class="subject-header">
@@ -472,7 +669,8 @@
                         <div class="unit-number">01</div>
                     </div>
                     <h3 class="unit-title">Tamil Grammar Fundamentals</h3>
-                    <p class="unit-description">Basic grammar rules, sentence structure, and fundamental concepts of Tamil language.</p>
+                    <p class="unit-description">Basic grammar rules, sentence structure, and fundamental concepts of
+                        Tamil language.</p>
                     <div class="unit-stats">
                         <span>12 topics</span>
                         <span>45 pages</span>
@@ -491,12 +689,14 @@
                         <div class="unit-number">02</div>
                     </div>
                     <h3 class="unit-title">Classical Tamil Literature</h3>
-                    <p class="unit-description">Study of ancient Tamil literary works, poetry, and their cultural significance.</p>
+                    <p class="unit-description">Study of ancient Tamil literary works, poetry, and their cultural
+                        significance.</p>
                     <div class="unit-stats">
                         <span>8 topics</span>
                         <span>38 pages</span>
                     </div>
-                    <div class="unit-topics">Topics: Sangam Literature, Tirukkural, Ancient Poets, Literary Analysis</div>
+                    <div class="unit-topics">Topics: Sangam Literature, Tirukkural, Ancient Poets, Literary Analysis
+                    </div>
                     <button class="download-btn" onclick="downloadUnit('tamil', 2)">
                         <i class="fas fa-download"></i> Download Unit 2
                     </button>
@@ -510,7 +710,8 @@
                         <div class="unit-number">03</div>
                     </div>
                     <h3 class="unit-title">Modern Tamil Prose</h3>
-                    <p class="unit-description">Contemporary Tamil writing, short stories, and modern literary movements.</p>
+                    <p class="unit-description">Contemporary Tamil writing, short stories, and modern literary
+                        movements.</p>
                     <div class="unit-stats">
                         <span>10 topics</span>
                         <span>42 pages</span>
@@ -529,12 +730,14 @@
                         <div class="unit-number">04</div>
                     </div>
                     <h3 class="unit-title">Tamil Drama & Poetry</h3>
-                    <p class="unit-description">Traditional and modern Tamil drama, poetry forms, and performance literature.</p>
+                    <p class="unit-description">Traditional and modern Tamil drama, poetry forms, and performance
+                        literature.</p>
                     <div class="unit-stats">
                         <span>9 topics</span>
                         <span>40 pages</span>
                     </div>
-                    <div class="unit-topics">Topics: Traditional Drama, Modern Poetry, Folk Literature, Performance Arts</div>
+                    <div class="unit-topics">Topics: Traditional Drama, Modern Poetry, Folk Literature, Performance Arts
+                    </div>
                     <button class="download-btn" onclick="downloadUnit('tamil', 4)">
                         <i class="fas fa-download"></i> Download Unit 4
                     </button>
@@ -553,7 +756,8 @@
                         <span>11 topics</span>
                         <span>35 pages</span>
                     </div>
-                    <div class="unit-topics">Topics: Cultural Heritage, Social Movements, Contemporary Tamil, Diaspora</div>
+                    <div class="unit-topics">Topics: Cultural Heritage, Social Movements, Contemporary Tamil, Diaspora
+                    </div>
                     <button class="download-btn" onclick="downloadUnit('tamil', 5)">
                         <i class="fas fa-download"></i> Download Unit 5
                     </button>
@@ -572,7 +776,8 @@
                         <div class="unit-number">01</div>
                     </div>
                     <h3 class="unit-title">English Grammar Basics</h3>
-                    <p class="unit-description">Parts of speech, sentence structure, tenses, and fundamental grammar rules.</p>
+                    <p class="unit-description">Parts of speech, sentence structure, tenses, and fundamental grammar
+                        rules.</p>
                     <div class="unit-stats">
                         <span>15 topics</span>
                         <span>52 pages</span>
@@ -591,12 +796,14 @@
                         <div class="unit-number">02</div>
                     </div>
                     <h3 class="unit-title">Reading Comprehension</h3>
-                    <p class="unit-description">Reading strategies, comprehension techniques, and analytical skills development.</p>
+                    <p class="unit-description">Reading strategies, comprehension techniques, and analytical skills
+                        development.</p>
                     <div class="unit-stats">
                         <span>12 topics</span>
                         <span>48 pages</span>
                     </div>
-                    <div class="unit-topics">Topics: Reading Strategies, Critical Analysis, Context Clues, Inference</div>
+                    <div class="unit-topics">Topics: Reading Strategies, Critical Analysis, Context Clues, Inference
+                    </div>
                     <button class="download-btn" onclick="downloadUnit('english', 2)">
                         <i class="fas fa-download"></i> Download Unit 2
                     </button>
@@ -610,7 +817,8 @@
                         <div class="unit-number">03</div>
                     </div>
                     <h3 class="unit-title">Writing Skills</h3>
-                    <p class="unit-description">Essay writing, creative writing, business communication, and writing techniques.</p>
+                    <p class="unit-description">Essay writing, creative writing, business communication, and writing
+                        techniques.</p>
                     <div class="unit-stats">
                         <span>14 topics</span>
                         <span>55 pages</span>
@@ -629,12 +837,14 @@
                         <div class="unit-number">04</div>
                     </div>
                     <h3 class="unit-title">Communication Skills</h3>
-                    <p class="unit-description">Verbal and non-verbal communication, presentation skills, and public speaking.</p>
+                    <p class="unit-description">Verbal and non-verbal communication, presentation skills, and public
+                        speaking.</p>
                     <div class="unit-stats">
                         <span>10 topics</span>
                         <span>44 pages</span>
                     </div>
-                    <div class="unit-topics">Topics: Verbal Communication, Body Language, Presentations, Interviews</div>
+                    <div class="unit-topics">Topics: Verbal Communication, Body Language, Presentations, Interviews
+                    </div>
                     <button class="download-btn" onclick="downloadUnit('english', 4)">
                         <i class="fas fa-download"></i> Download Unit 4
                     </button>
@@ -648,7 +858,8 @@
                         <div class="unit-number">05</div>
                     </div>
                     <h3 class="unit-title">Literature Analysis</h3>
-                    <p class="unit-description">Literary devices, themes, character analysis, and critical appreciation.</p>
+                    <p class="unit-description">Literary devices, themes, character analysis, and critical appreciation.
+                    </p>
                     <div class="unit-stats">
                         <span>11 topics</span>
                         <span>47 pages</span>
@@ -672,7 +883,8 @@
                         <div class="unit-number">01</div>
                     </div>
                     <h3 class="unit-title">Descriptive Statistics</h3>
-                    <p class="unit-description">Measures of central tendency, dispersion, and data presentation techniques.</p>
+                    <p class="unit-description">Measures of central tendency, dispersion, and data presentation
+                        techniques.</p>
                     <div class="unit-stats">
                         <span>13 topics</span>
                         <span>58 pages</span>
@@ -691,7 +903,8 @@
                         <div class="unit-number">02</div>
                     </div>
                     <h3 class="unit-title">Probability Theory</h3>
-                    <p class="unit-description">Basic probability concepts, conditional probability, and probability distributions.</p>
+                    <p class="unit-description">Basic probability concepts, conditional probability, and probability
+                        distributions.</p>
                     <div class="unit-stats">
                         <span>11 topics</span>
                         <span>62 pages</span>
@@ -734,7 +947,8 @@
                         <span>10 topics</span>
                         <span>56 pages</span>
                     </div>
-                    <div class="unit-topics">Topics: Linear Regression, Correlation, Multiple Regression, Model Validation</div>
+                    <div class="unit-topics">Topics: Linear Regression, Correlation, Multiple Regression, Model
+                        Validation</div>
                     <button class="download-btn" onclick="downloadUnit('statistics', 4)">
                         <i class="fas fa-download"></i> Download Unit 4
                     </button>
@@ -748,12 +962,14 @@
                         <div class="unit-number">05</div>
                     </div>
                     <h3 class="unit-title">Applied Statistics</h3>
-                    <p class="unit-description">Real-world applications, data analysis projects, and statistical software.</p>
+                    <p class="unit-description">Real-world applications, data analysis projects, and statistical
+                        software.</p>
                     <div class="unit-stats">
                         <span>14 topics</span>
                         <span>72 pages</span>
                     </div>
-                    <div class="unit-topics">Topics: Data Mining, Quality Control, Survey Analysis, Statistical Software</div>
+                    <div class="unit-topics">Topics: Data Mining, Quality Control, Survey Analysis, Statistical Software
+                    </div>
                     <button class="download-btn" onclick="downloadUnit('statistics', 5)">
                         <i class="fas fa-download"></i> Download Unit 5
                     </button>
@@ -772,7 +988,8 @@
                         <div class="unit-number">01</div>
                     </div>
                     <h3 class="unit-title">Java Fundamentals</h3>
-                    <p class="unit-description">Basic syntax, variables, operators, and control structures in Java programming.</p>
+                    <p class="unit-description">Basic syntax, variables, operators, and control structures in Java
+                        programming.</p>
                     <div class="unit-stats">
                         <span>16 topics</span>
                         <span>68 pages</span>
@@ -791,7 +1008,8 @@
                         <div class="unit-number">02</div>
                     </div>
                     <h3 class="unit-title">Object-Oriented Programming</h3>
-                    <p class="unit-description">Classes, objects, inheritance, polymorphism, and encapsulation concepts.</p>
+                    <p class="unit-description">Classes, objects, inheritance, polymorphism, and encapsulation concepts.
+                    </p>
                     <div class="unit-stats">
                         <span>14 topics</span>
                         <span>75 pages</span>
@@ -810,7 +1028,8 @@
                         <div class="unit-number">03</div>
                     </div>
                     <h3 class="unit-title">Exception Handling & Debugging</h3>
-                    <p class="unit-description">Error handling, exception types, debugging techniques, and best practices.</p>
+                    <p class="unit-description">Error handling, exception types, debugging techniques, and best
+                        practices.</p>
                     <div class="unit-stats">
                         <span>12 topics</span>
                         <span>58 pages</span>
@@ -829,7 +1048,8 @@
                         <div class="unit-number">04</div>
                     </div>
                     <h3 class="unit-title">Data Structures & Collections</h3>
-                    <p class="unit-description">Arrays, lists, maps, sets, and advanced data structure implementations.</p>
+                    <p class="unit-description">Arrays, lists, maps, sets, and advanced data structure implementations.
+                    </p>
                     <div class="unit-stats">
                         <span>13 topics</span>
                         <span>82 pages</span>
@@ -848,7 +1068,8 @@
                         <div class="unit-number">05</div>
                     </div>
                     <h3 class="unit-title">Advanced Java Concepts</h3>
-                    <p class="unit-description">Multithreading, file I/O, networking, and GUI development with Swing.</p>
+                    <p class="unit-description">Multithreading, file I/O, networking, and GUI development with Swing.
+                    </p>
                     <div class="unit-stats">
                         <span>15 topics</span>
                         <span>95 pages</span>
@@ -910,7 +1131,8 @@
                         <div class="unit-number">03</div>
                     </div>
                     <h3 class="unit-title">Media & Multimedia</h3>
-                    <p class="unit-description">Images, videos, audio, and embedding multimedia content in web pages.</p>
+                    <p class="unit-description">Images, videos, audio, and embedding multimedia content in web pages.
+                    </p>
                     <div class="unit-stats">
                         <span>8 topics</span>
                         <span>42 pages</span>
@@ -929,7 +1151,8 @@
                         <div class="unit-number">04</div>
                     </div>
                     <h3 class="unit-title">Forms & Input Elements</h3>
-                    <p class="unit-description">Creating interactive forms, input types, validation, and form handling.</p>
+                    <p class="unit-description">Creating interactive forms, input types, validation, and form handling.
+                    </p>
                     <div class="unit-stats">
                         <span>11 topics</span>
                         <span>52 pages</span>
@@ -948,7 +1171,8 @@
                         <div class="unit-number">05</div>
                     </div>
                     <h3 class="unit-title">Advanced HTML & Semantic Web</h3>
-                    <p class="unit-description">Semantic elements, accessibility, SEO optimization, and modern HTML5 features.</p>
+                    <p class="unit-description">Semantic elements, accessibility, SEO optimization, and modern HTML5
+                        features.</p>
                     <div class="unit-stats">
                         <span>13 topics</span>
                         <span>65 pages</span>
@@ -961,6 +1185,47 @@
             </div>
         </div>
     </main>
+    <!-- Site Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h3 id="about"><i class="fa-solid fa-circle-info" style="margin-right: 0.5rem;"></i> About Us</h3>
+                        <p>Download comprehensive study notes and excel in your academic journey.We built Notes Dock with a
+                            simple yet powerful mission: to make learning smarter,
+                            sharing easier, and knowledge accessible to everyone.
+                        </p>
+                    </div>
+
+                    <div class="footer-column">
+                        <h3 id="contact"> <i class="fa-regular fa-address-book" style="margin-right: 0.5rem;"></i>Contact
+                            Info</h3>
+                        <div class="footer-contact">
+                            <a href="mailto:info@noteshub.com" class="footer-contact-item">
+                                <span class="footer-contact-icon">
+                                    <i class="fa-solid fa-envelope fa-beat"></i>
+                                </span>
+                                notesdock143@gmail.com
+                            </a>
+                            <a href="https://instagram.com/noteshub" class="footer-contact-item">
+                                <span class="footer-contact-icon">
+                                    <i class="fa-brands fa-instagram fa-beat"></i>
+                                </span>
+                                notes_dock_ig
+                            </a>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>⏰ 24/7 Support Available</p>
+                    <p>&copy; 2025 Notes Dock. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
 
     <script>
         // Subject data with enhanced information
@@ -995,14 +1260,15 @@
                 totalFiles: 10,
                 totalPages: 242
             }
-        };
+        };   
+
 
         // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Get subject from URL parameter or default to Tamil
             const urlParams = new URLSearchParams(window.location.search);
             const subject = urlParams.get('subject') || 'tamil';
-            
+
             if (subject && subjectData[subject]) {
                 showSubject(subject);
             } else {
@@ -1077,7 +1343,7 @@
             setTimeout(() => {
                 // In a real application, this would trigger an actual download
                 showToast(`Downloaded ${subject.charAt(0).toUpperCase() + subject.slice(1)} Unit ${unitNumber} successfully!`, 'success');
-                
+
                 // Reset button
                 button.innerHTML = originalText;
                 button.disabled = false;
@@ -1154,13 +1420,13 @@
         }
 
         // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             // Navigate between subjects with arrow keys
             if (e.altKey) {
                 const subjects = ['tamil', 'english', 'statistics', 'java', 'html'];
                 const activeTab = document.querySelector('.subject-tab.active');
                 const currentIndex = Array.from(document.querySelectorAll('.subject-tab')).indexOf(activeTab);
-                
+
                 if (e.key === 'ArrowRight' && currentIndex < subjects.length - 1) {
                     e.preventDefault();
                     showSubject(subjects[currentIndex + 1]);
@@ -1180,16 +1446,16 @@
         function searchUnits(searchTerm) {
             const activeSection = document.querySelector('.subject-section.active');
             const unitCards = activeSection.querySelectorAll('.unit-card');
-            
+
             unitCards.forEach(card => {
                 const title = card.querySelector('.unit-title').textContent.toLowerCase();
                 const description = card.querySelector('.unit-description').textContent.toLowerCase();
                 const topics = card.querySelector('.unit-topics').textContent.toLowerCase();
-                
-                const isVisible = title.includes(searchTerm.toLowerCase()) || 
-                                description.includes(searchTerm.toLowerCase()) || 
-                                topics.includes(searchTerm.toLowerCase());
-                
+
+                const isVisible = title.includes(searchTerm.toLowerCase()) ||
+                    description.includes(searchTerm.toLowerCase()) ||
+                    topics.includes(searchTerm.toLowerCase());
+
                 card.style.display = isVisible ? 'block' : 'none';
             });
         }
@@ -1234,7 +1500,7 @@
         }
 
         // Help shortcut
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'F1') {
                 e.preventDefault();
                 showKeyboardShortcuts();
@@ -1247,4 +1513,4 @@
     </script>
 </body>
 
-</html> 
+</html>
