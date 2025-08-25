@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Select your department, year, and semester to access study notes.">
     <title>Notes Dock</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/NotesDock/frontend/assets/logo.png">
+
     <style>
         /* CSS Reset and Base Styles */
         * {
@@ -35,18 +36,27 @@
             animation: slideDown 0.8s ease-out;
             position: relative;
         }
+        .header-logo {
+            width: 29px;
+            height: 29px;
+           
+            object-fit: contain;            
+        }
+ 
 
         .site-title {
-            font-size: 2rem;
+            font-size: 1.9rem;
             font-weight: 700;
             background: linear-gradient(135deg, #4f46e5, #06b6d4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            
             color: transparent;
             display: inline-block;
             animation: fadeInScale 1s ease-out 0.3s both;
         }
+
         /* Main Content Styles */
         .main-content {
             flex: 1;
@@ -198,10 +208,12 @@
         }
 
         /* Footer */
+        
         .footer {
+            background: linear-gradient(135deg, #1f2937, #111827);
             text-align: center;
-            padding: 2rem 1rem;
-            color: #6b7280;
+            padding: 1rem 1rem;
+            color: #ffffff;
             font-size: 0.875rem;
             animation: fadeIn 1s ease-out 1.8s both;
         }
@@ -241,82 +253,6 @@
             outline: 2px solid #2563EB;
             outline-offset: 2px;
         }
-
-        /* Dark mode styles */
-        /*  body.dark-mode {
-            background-color: #111827;
-            color: #f9fafb;
-        }
-
-        body.dark-mode .header,
-        body.dark-mode .selection-container {
-            background-color: #1f2937;
-            color: #f9fafb;
-        }
-
-        body.dark-mode .selection-title {
-            color: #f9fafb;
-        }
-
-        body.dark-mode .selection-subtitle {
-            color: #d1d5db;
-        }
-
-        body.dark-mode .form-label {
-            color: #f9fafb;
-        }
-
-        body.dark-mode .form-select {
-            background-color: #374151;
-            color: #f9fafb;
-            border-color: #4b5563;
-        }
-
-        body.dark-mode .form-select:focus {
-            border-color: #2563EB;
-        }
-
-        body.dark-mode .form-select:hover {
-            border-color: #6b7280;
-        }
-
-        body.dark-mode .footer {
-            color: #d1d5db;
-        }
-
-        body.dark-mode .footer a {
-            color: #60a5fa;
-        }
-
-        body.dark-mode .error-message {
-            background-color: #1f2937;
-            color: #fca5a5;
-            border-color: #374151;
-        }
-
-        /* Dark mode toggle button 
-        .dark-mode-toggle {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 8px;
-            transition: background-color 0.2s ease;
-            animation: fadeInScale 1s ease-out 0.5s both;
-        }
-
-        .dark-mode-toggle:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-
-        body.dark-mode .dark-mode-toggle:hover {
-            background-color: #4b5563;
-            border-color: #6b7280;
-        }*/
 
         /* Animation Keyframes */
         @keyframes fadeIn {
@@ -416,7 +352,7 @@
     <!-- Header -->
 
     <header class="header">
-        <!-- <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button> -->
+        <img src="/NotesDock/frontend/assets/logo.png" alt="Notes Dock Logo" class="header-logo">
         <h1 class="site-title">Notes Dock</h1>
     </header>
 
@@ -559,39 +495,7 @@
                 }
             }
 
-            /**
-             * Handles dark mode toggle
-             */
-            // function toggleDarkMode() {
-            //     document.body.classList.toggle('dark-mode');
-            //     const isDark = document.body.classList.contains('dark-mode');
-            //     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            //     darkModeToggle.textContent = isDark ? '☀️' : '🌙';
-
-            //     // Debug log
-            //     console.log('Dark mode toggled:', isDark);
-            // }
-
-            /**
-             * Initializes dark mode based on saved preference
-             */
-            // function initializeDarkMode() {
-            //     const savedTheme = localStorage.getItem('theme');
-            //     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-            //     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            //         document.body.classList.add('dark-mode');
-            //         darkModeToggle.textContent = '☀️';
-            //     } else {
-            //         document.body.classList.remove('dark-mode');
-            //         darkModeToggle.textContent = '🌙';
-            //     }
-
-            //     // Debug log
-            //     console.log('Dark mode initialized:', document.body.classList.contains('dark-mode'));
-            // }
-
-            // Event Listeners
+           // Event Listeners
             form.addEventListener('submit', handleSubmit);
             departmentSelect.addEventListener('change', updateSubmitButton);
             yearSelect.addEventListener('change', updateSubmitButton);
@@ -609,18 +513,8 @@
                 e.preventDefault();
                 toggleDarkMode();
             });
-
-            // Initialize
-            // initializeDarkMode();
-            updateSubmitButton();
-
-            // Also add keyboard support for dark mode toggle
-            // darkModeToggle.addEventListener('keydown', function(e) {
-            //     if (e.key === 'Enter' || e.key === ' ') {
-            //         e.preventDefault();
-            //         toggleDarkMode();
-            //     }
-            // });
+          
+            updateSubmitButton();           
 
             // Keyboard navigation improvements
             document.addEventListener('keydown', function (e) {
