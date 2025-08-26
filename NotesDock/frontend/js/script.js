@@ -25,11 +25,11 @@
                 totalPages: 378
             },
             html: {
-                title: 'HTML & Web Development',
-                subtitle: 'HTML markup language and web development fundamentals',
-                totalFiles: 10,
-                totalPages: 242
-            }
+                 title: 'Web Technology & Development',
+                  subtitle: 'HTML, CSS, JavaScript, DOM manipulation, and AngularJS framework',
+                 totalFiles: 15,
+                totalPages: 335
+    }
         };
 
 

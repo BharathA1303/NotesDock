@@ -190,7 +190,7 @@
         .subject-tabs {
             display: inline-flex;
             background: var(--bg-card);
-            border-radius: 1rem;
+            border-radius: 1.5rem;
             padding: 0.5rem;
             box-shadow: var(--shadow-md);
             gap: 0.25rem;
@@ -202,7 +202,7 @@
             border: none;
             border-radius: 0.75rem;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 500;
             transition: all 0.3s ease;
             color: var(--text-secondary);
@@ -455,7 +455,7 @@
                 align-items: flex-start;
             }
         }
-/* Units Grid */
+        /* Units Grid */
         .units-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
