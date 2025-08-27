@@ -190,7 +190,7 @@
         .subject-tabs {
             display: inline-flex;
             background: var(--bg-card);
-            border-radius: 1.5rem;
+            border-radius: 1rem;
             padding: 0.5rem;
             box-shadow: var(--shadow-md);
             gap: 0.25rem;
@@ -202,7 +202,7 @@
             border: none;
             border-radius: 0.75rem;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: all 0.3s ease;
             color: var(--text-secondary);
@@ -371,8 +371,6 @@
             font-size: 0.875rem;
         }
 
-        
-
 
         
 
@@ -457,7 +455,7 @@
                 align-items: flex-start;
             }
         }
-        /* Units Grid */
+/* Units Grid */
         .units-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -619,3 +617,185 @@
                 transform: translateY(0);
             }
         }
+        
+
+        /* Modal Styles */
+        .admin-modal-overlay,
+        .edit-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .admin-modal-overlay.active,
+        .edit-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .admin-modal,
+        .edit-modal {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .admin-modal-overlay.active .admin-modal,
+        .edit-modal-overlay.active .edit-modal {
+            transform: scale(1);
+        }
+
+        .admin-modal-header,
+        .edit-modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .admin-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .admin-close-btn:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .admin-modal-title,
+        .edit-modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-modal-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .admin-modal-body {
+            padding: 2rem;
+        }
+
+        .admin-error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .admin-form-group,
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .admin-label,
+        .form-label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .admin-input,
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .admin-input:focus,
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .admin-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+
+        .admin-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .admin-btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .admin-btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .admin-btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .admin-btn-secondary:hover {
+            background: var(--border-color);
+        }
+        

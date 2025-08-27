@@ -14,7 +14,7 @@
 <body>
     <header class="header">
         <div class="header-brand">
-            <a href="./index.html"><img src="/NotesDock/frontend/assets/logo.png" alt="Notes Dock Logo" class="header-logo"></a>
+            <img src="/NotesDock/frontend/assets/logo.png" alt="Notes Dock Logo" class="header-logo">
             <h1 class="site-title">Notes Dock</h1>
         </div>
         <nav class="header-nav">
@@ -24,6 +24,44 @@
                         class="fa-solid fa-user-tie"></i></span><b> Admin</b></a>
         </nav>
     </header>
+    <!-- Admin Modal -->
+    <div class="admin-modal-overlay" id="admin-modal-overlay" aria-hidden="true">
+        <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="admin-modal-title">
+            <div class="admin-modal-header">
+                <button class="admin-close-btn" onclick="closeAdminModal()" aria-label="Close admin panel">
+                    ×
+                </button>
+                <h2 class="admin-modal-title" id="admin-modal-title">Admin Panel</h2>
+                <p class="admin-modal-subtitle">Please enter your credentials to continue</p>
+            </div>
+            <div class="admin-modal-body">
+                <div class="admin-error" id="admin-error" role="alert" aria-live="assertive">
+                    Invalid username or password. Please try again.
+                </div>
+                <form id="admin-form">
+                    <div class="admin-form-group">
+                        <label for="admin-username" class="admin-label">Username</label>
+                        <input type="text" id="admin-username" name="username" class="admin-input"
+                            placeholder="Enter your username" required>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="admin-password" class="admin-label">Password</label>
+                        <input type="password" id="admin-password" name="password" class="admin-input"
+                            placeholder="Enter your password" required>
+                    </div>
+                    <div class="admin-buttons">
+                        <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal()">
+                            Cancel
+                        </button>
+                        <button type="submit" class="admin-btn admin-btn-primary" onclick="handleAdminLogin(event)" >
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <main class="main-content">
 
@@ -41,7 +79,7 @@
                 <button class="subject-tab" onclick="showSubject('english')">English</button>
                 <button class="subject-tab" onclick="showSubject('statistics')">Statistics</button>
                 <button class="subject-tab" onclick="showSubject('java')">Java</button>
-                <button class="subject-tab" onclick="showSubject('html')">Web Technology</button>
+                <button class="subject-tab" onclick="showSubject('html')">HTML</button>
             </div>
         </div>
 
@@ -469,108 +507,109 @@
             </div>
         </div>
 
-        <!-- Html Section -->
+        <!-- HTML Units -->
         <div id="html-section" class="subject-section html">
-        <div class="units-grid">
-        <div class="unit-card">
-            <div class="unit-header">
-                <div class="unit-icon">
-                    <i class="fab fa-html5"></i>
+            <div class="units-grid">
+                <div class="unit-card">
+                    <div class="unit-header">
+                        <div class="unit-icon">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <div class="unit-number">01</div>
+                    </div>
+                    <h3 class="unit-title">HTML Fundamentals</h3>
+                    <p class="unit-description">Basic HTML structure, tags, elements, and document organization.</p>
+                    <div class="unit-stats">
+                        <span>12 topics</span>
+                        <span>45 pages</span>
+                    </div>
+                    <div class="unit-topics">Topics: HTML Structure, Basic Tags, Document Head, Body Elements</div>
+                    <button class="download-btn" onclick="downloadUnit('html', 1)">
+                        <i class="fas fa-download"></i> Download Unit 1
+                    </button>
                 </div>
-                <div class="unit-number">01</div>
-            </div>
-            <h3 class="unit-title">Introduction to HTML</h3>
-            <p class="unit-description">Basic HTML structure, anchor tags, hyperlinks, head and body sections, headings, horizontal rulers, paragraphs, tags, images, pictures, lists, tables, frames, forms and form elements.</p>
-            <div class="unit-stats">
-                <span>15 topics</span>
-                <span>62 pages</span>
-            </div>
-            <div class="unit-topics">Topics: HTML Structure, Anchor Tags, Hyperlinks, Head & Body, Headings, Horizontal Ruler, Paragraphs, Tags, Images, Lists, Tables, Frames, Forms</div>
-            <button class="download-btn" onclick="downloadUnit('html', 1)">
-                <i class="fas fa-download"></i> Download Unit 1
-            </button>
-        </div>
 
-        <div class="unit-card">
-            <div class="unit-header">
-                <div class="unit-icon">
-                    <i class="fab fa-css3-alt"></i>
+                <div class="unit-card">
+                    <div class="unit-header">
+                        <div class="unit-icon">
+                            <i class="fas fa-list"></i>
+                        </div>
+                        <div class="unit-number">02</div>
+                    </div>
+                    <h3 class="unit-title">Text & Content Elements</h3>
+                    <p class="unit-description">Headings, paragraphs, lists, links, and text formatting elements.</p>
+                    <div class="unit-stats">
+                        <span>10 topics</span>
+                        <span>38 pages</span>
+                    </div>
+                    <div class="unit-topics">Topics: Headings, Paragraphs, Lists, Links, Text Formatting</div>
+                    <button class="download-btn" onclick="downloadUnit('html', 2)">
+                        <i class="fas fa-download"></i> Download Unit 2
+                    </button>
                 </div>
-                <div class="unit-number">02</div>
-            </div>
-            <h3 class="unit-title">DHTML and Style Sheets</h3>
-            <p class="unit-description">Dynamic HTML concepts, defining styles, elements of style, linking style sheets to HTML documents, inline styles, external style sheets, multiple styles, and web page designing principles.</p>
-            <div class="unit-stats">
-                <span>12 topics</span>
-                <span>58 pages</span>
-            </div>
-            <div class="unit-topics">Topics: DHTML, Style Definitions, Style Elements, Linking Stylesheets, Inline Styles, External Stylesheets, Multiple Styles, Web Design</div>
-            <button class="download-btn" onclick="downloadUnit('html', 2)">
-                <i class="fas fa-download"></i> Download Unit 2
-            </button>
-        </div>
 
-        <div class="unit-card">
-            <div class="unit-header">
-                <div class="unit-icon">
-                    <i class="fab fa-js-square"></i>
+                <div class="unit-card">
+                    <div class="unit-header">
+                        <div class="unit-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="unit-number">03</div>
+                    </div>
+                    <h3 class="unit-title">Media & Multimedia</h3>
+                    <p class="unit-description">Images, videos, audio, and embedding multimedia content in web pages.
+                    </p>
+                    <div class="unit-stats">
+                        <span>8 topics</span>
+                        <span>42 pages</span>
+                    </div>
+                    <div class="unit-topics">Topics: Images, Videos, Audio, Canvas, SVG, Responsive Media</div>
+                    <button class="download-btn" onclick="downloadUnit('html', 3)">
+                        <i class="fas fa-download"></i> Download Unit 3
+                    </button>
                 </div>
-                <div class="unit-number">03</div>
-            </div>
-            <h3 class="unit-title">Introduction to JavaScript</h3>
-            <p class="unit-description">JavaScript fundamentals, advantages of JavaScript, data types, variables, arrays, operators and expressions, control and looping constructs, functions, and dialog boxes.</p>
-            <div class="unit-stats">
-                <span>14 topics</span>
-                <span>72 pages</span>
-            </div>
-            <div class="unit-topics">Topics: JS Advantages, Data Types, Variables, Arrays, Operators, Control Structures, Loops, Functions, Dialog Boxes</div>
-            <button class="download-btn" onclick="downloadUnit('html', 3)">
-                <i class="fas fa-download"></i> Download Unit 3
-            </button>
-        </div>
 
-        <div class="unit-card">
-            <div class="unit-header">
-                <div class="unit-icon">
-                    <i class="fas fa-mouse-pointer"></i>
+                <div class="unit-card">
+                    <div class="unit-header">
+                        <div class="unit-icon">
+                            <i class="fas fa-wpforms"></i>
+                        </div>
+                        <div class="unit-number">04</div>
+                    </div>
+                    <h3 class="unit-title">Forms & Input Elements</h3>
+                    <p class="unit-description">Creating interactive forms, input types, validation, and form handling.
+                    </p>
+                    <div class="unit-stats">
+                        <span>11 topics</span>
+                        <span>52 pages</span>
+                    </div>
+                    <div class="unit-topics">Topics: Form Elements, Input Types, Validation, Buttons, Labels</div>
+                    <button class="download-btn" onclick="downloadUnit('html', 4)">
+                        <i class="fas fa-download"></i> Download Unit 4
+                    </button>
                 </div>
-                <div class="unit-number">04</div>
-            </div>
-            <h3 class="unit-title">JavaScript DOM & Events</h3>
-            <p class="unit-description">JavaScript Document Object Model, event handling mechanisms, form object handling, built-in object usage, and user-defined object-cookies implementation.</p>
-            <div class="unit-stats">
-                <span>11 topics</span>
-                <span>65 pages</span>
-            </div>
-            <div class="unit-topics">Topics: DOM Manipulation, Event Handling, Form Objects, Built-in Objects, User-defined Objects, Cookies</div>
-            <button class="download-btn" onclick="downloadUnit('html', 4)">
-                <i class="fas fa-download"></i> Download Unit 4
-            </button>
-        </div>
 
-        <div class="unit-card">
-            <div class="unit-header">
-                <div class="unit-icon">
-                    <i class="fab fa-angular"></i>
+                <div class="unit-card">
+                    <div class="unit-header">
+                        <div class="unit-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="unit-number">05</div>
+                    </div>
+                    <h3 class="unit-title">Advanced HTML & Semantic Web</h3>
+                    <p class="unit-description">Semantic elements, accessibility, SEO optimization, and modern HTML5
+                        features.</p>
+                    <div class="unit-stats">
+                        <span>13 topics</span>
+                        <span>65 pages</span>
+                    </div>
+                    <div class="unit-topics">Topics: Semantic HTML, Accessibility, SEO, HTML5 APIs, Best Practices</div>
+                    <button class="download-btn" onclick="downloadUnit('html', 5)">
+                        <i class="fas fa-download"></i> Download Unit 5
+                    </button>
                 </div>
-                <div class="unit-number">05</div>
             </div>
-            <h3 class="unit-title">Angular JS Framework</h3>
-            <p class="unit-description">Introduction to AngularJS, data binding and directives, services, components and templates, forms and validation for modern web application development.</p>
-            <div class="unit-stats">
-                <span>13 topics</span>
-                <span>78 pages</span>
-            </div>
-            <div class="unit-topics">Topics: AngularJS Introduction, Data Binding, Directives, Services, Components, Templates, Forms, Validation</div>
-            <button class="download-btn" onclick="downloadUnit('html', 5)">
-                <i class="fas fa-download"></i> Download Unit 5
-            </button>
         </div>
-    </div>
-</div>
     </main>
-
-    
     <!-- Site Footer -->
     <footer class="site-footer">
         <div class="footer-content">

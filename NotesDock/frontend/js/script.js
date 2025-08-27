@@ -25,15 +25,51 @@
                 totalPages: 378
             },
             html: {
-                 title: 'Web Technology & Development',
-                  subtitle: 'HTML, CSS, JavaScript, DOM manipulation, and AngularJS framework',
-                 totalFiles: 15,
-                totalPages: 335
-    }
+                title: 'HTML & Web Development',
+                subtitle: 'HTML markup language and web development fundamentals',
+                totalFiles: 10,
+                totalPages: 242
+            }
         };
-
         
+        // Admin Functions
+        function openAdminModal() {
+            const modal = document.getElementById('admin-modal-overlay');
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.getElementById('admin-username').focus();
+        }
 
+        function closeAdminModal() {
+            const modal = document.getElementById('admin-modal-overlay');
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+
+            // Reset form
+            document.getElementById('admin-form').reset();
+            document.getElementById('admin-error').style.display = 'none';
+        }
+
+        function handleAdminLogin(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('admin-username').value;
+            const password = document.getElementById('admin-password').value;
+
+            // Simple authentication (in real app, use proper authentication)
+            if (username === 'admin' && password === 'password') {
+                isAdminLoggedIn = true;
+                currentUser = username;
+                closeAdminModal();
+                showAdminDashboard();
+            } else {
+                document.getElementById('admin-error').style.display = 'block';
+            }
+        }
+
+        function showAdminDashboard() {
+            window.location.href = "admin_page.html";
+        }
 
         // Initialize the page
         document.addEventListener('DOMContentLoaded', function () {
