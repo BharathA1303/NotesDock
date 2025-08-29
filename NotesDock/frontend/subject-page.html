@@ -9,6 +9,56 @@
     <link rel="icon" href="/NotesDock/frontend/assets/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="./css/style.css">
+    
+    <style>
+.no-units-message {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 2px dashed #dee2e6;
+}
+
+.no-units-icon {
+    font-size: 4rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+.no-units-title {
+    color: #495057;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.no-units-description {
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+.no-units-suggestion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #007bff;
+    font-size: 0.9rem;
+}
+
+.subject-tab.empty-subject {
+    opacity: 0.6;
+    position: relative;
+}
+
+.subject-tab.empty-subject::after {
+    content: "⚬";
+    margin-left: 0.25rem;
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+</style>
+
 </head>
 
 <body>
@@ -83,113 +133,12 @@
             </div>
         </div>
 
-        <!-- Tamil Units -->
-        <div id="tamil-section" class="subject-section tamil active">
-            <div class="units-grid">
-                <div class="unit-card">
-                    <div class="unit-header">
-                        <div class="unit-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <div class="unit-number">01</div>
-                    </div>
-                    <h3 class="unit-title">Tamil Grammar Fundamentals</h3>
-                    <p class="unit-description">Basic grammar rules, sentence structure, and fundamental concepts of
-                        Tamil language.</p>
-                    <div class="unit-stats">
-                        <span>12 topics</span>
-                        <span>45 pages</span>
-                    </div>
-                    <div class="unit-topics">Topics: Letters, Words, Sentence Formation, Basic Grammar Rules</div>
-                    <button class="download-btn" onclick="downloadUnit('tamil', 1)">
-                        <i class="fas fa-download"></i> Download Unit 1
-                    </button>
-                </div>
-
-                <div class="unit-card">
-                    <div class="unit-header">
-                        <div class="unit-icon">
-                            <i class="fas fa-feather-alt"></i>
-                        </div>
-                        <div class="unit-number">02</div>
-                    </div>
-                    <h3 class="unit-title">Classical Tamil Literature</h3>
-                    <p class="unit-description">Study of ancient Tamil literary works, poetry, and their cultural
-                        significance.</p>
-                    <div class="unit-stats">
-                        <span>8 topics</span>
-                        <span>38 pages</span>
-                    </div>
-                    <div class="unit-topics">Topics: Sangam Literature, Tirukkural, Ancient Poets, Literary Analysis
-                    </div>
-                    <button class="download-btn" onclick="downloadUnit('tamil', 2)">
-                        <i class="fas fa-download"></i> Download Unit 2
-                    </button>
-                </div>
-
-                <div class="unit-card">
-                    <div class="unit-header">
-                        <div class="unit-icon">
-                            <i class="fas fa-scroll"></i>
-                        </div>
-                        <div class="unit-number">03</div>
-                    </div>
-                    <h3 class="unit-title">Modern Tamil Prose</h3>
-                    <p class="unit-description">Contemporary Tamil writing, short stories, and modern literary
-                        movements.</p>
-                    <div class="unit-stats">
-                        <span>10 topics</span>
-                        <span>42 pages</span>
-                    </div>
-                    <div class="unit-topics">Topics: Modern Writers, Short Stories, Essays, Literary Criticism</div>
-                    <button class="download-btn" onclick="downloadUnit('tamil', 3)">
-                        <i class="fas fa-download"></i> Download Unit 3
-                    </button>
-                </div>
-
-                <div class="unit-card">
-                    <div class="unit-header">
-                        <div class="unit-icon">
-                            <i class="fas fa-theater-masks"></i>
-                        </div>
-                        <div class="unit-number">04</div>
-                    </div>
-                    <h3 class="unit-title">Tamil Drama & Poetry</h3>
-                    <p class="unit-description">Traditional and modern Tamil drama, poetry forms, and performance
-                        literature.</p>
-                    <div class="unit-stats">
-                        <span>9 topics</span>
-                        <span>40 pages</span>
-                    </div>
-                    <div class="unit-topics">Topics: Traditional Drama, Modern Poetry, Folk Literature, Performance Arts
-                    </div>
-                    <button class="download-btn" onclick="downloadUnit('tamil', 4)">
-                        <i class="fas fa-download"></i> Download Unit 4
-                    </button>
-                </div>
-
-                <div class="unit-card">
-                    <div class="unit-header">
-                        <div class="unit-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <div class="unit-number">05</div>
-                    </div>
-                    <h3 class="unit-title">Tamil Culture & Society</h3>
-                    <p class="unit-description">Tamil cultural heritage, social aspects, and contemporary relevance.</p>
-                    <div class="unit-stats">
-                        <span>11 topics</span>
-                        <span>35 pages</span>
-                    </div>
-                    <div class="unit-topics">Topics: Cultural Heritage, Social Movements, Contemporary Tamil, Diaspora
-                    </div>
-                    <button class="download-btn" onclick="downloadUnit('tamil', 5)">
-                        <i class="fas fa-download"></i> Download Unit 5
-                    </button>
-                </div>
-            </div>
-        </div>
-
+       <!-- Tamil Units -->
+<div id="tamil-section" class="subject-section tamil active">
+    <div class="units-grid">
+        <!-- Content will be loaded dynamically by JavaScript -->
+    </div>
+</div>
         <!-- English Units -->
         <div id="english-section" class="subject-section english">
             <div class="units-grid">

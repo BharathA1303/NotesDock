@@ -1,81 +1,94 @@
+function logoutAdmin() {
+    localStorage.removeItem("isAdminLoggedIn");
+    window.location.href = "subject-page.html";
+}
 
- function logoutAdmin() {
-      localStorage.removeItem("isAdminLoggedIn");
-      window.location.href = "subject-page.html";
-  }
-   
 // Tab switching functionality
-        function showAdminSection(sectionName) {
-            // Hide all sections
-            document.querySelectorAll('.admin-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Remove active class from all tabs
-            document.querySelectorAll('.admin-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Show selected section and activate tab
-            document.getElementById(sectionName + '-section').classList.add('active');
-            event.target.classList.add('active');
-        }
+function showAdminSection(sectionName) {
+    // Hide all sections
+    document.querySelectorAll('.admin-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    
+    // Remove active class from all tabs
+    document.querySelectorAll('.admin-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // Show selected section and activate tab
+    document.getElementById(sectionName + '-section').classList.add('active');
+    event.target.classList.add('active');
+    
+    // Initialize specific sections
+    if (sectionName === 'manage') {
+        setTimeout(() => initializeManageSection(), 100);
+    } else if (sectionName === 'overview') {
+        setTimeout(() => initializeOverview(), 100);
+    }
+}
 
-        // Toggle new subject input
-        function toggleNewSubject() {
-            const select = document.getElementById('subjectSelect');
-            const newSubjectGroup = document.getElementById('newSubjectGroup');
-            
-            if (select.value === 'new') {
-                newSubjectGroup.style.display = 'block';
-                document.getElementById('newSubjectName').required = true;
-            } else {
-                newSubjectGroup.style.display = 'none';
-                document.getElementById('newSubjectName').required = false;
-                document.getElementById('newSubjectName').value = '';
-            }
-        }
+// Toggle new subject input
+function toggleNewSubject() {
+    const select = document.getElementById('subjectSelect');
+    const newSubjectGroup = document.getElementById('newSubjectGroup');
+    
+    if (select.value === 'new') {
+        newSubjectGroup.style.display = 'block';
+        document.getElementById('newSubjectName').required = true;
+    } else {
+        newSubjectGroup.style.display = 'none';
+        document.getElementById('newSubjectName').required = false;
+        document.getElementById('newSubjectName').value = '';
+    }
+}
 
-        // Auto-calculate topics count
-        document.getElementById('unitTopics').addEventListener('input', function() {
+// Auto-calculate topics count
+document.addEventListener('DOMContentLoaded', function() {
+    const unitTopicsInput = document.getElementById('unitTopics');
+    if (unitTopicsInput) {
+        unitTopicsInput.addEventListener('input', function() {
             const topics = this.value.split(',').filter(topic => topic.trim() !== '');
             document.getElementById('topicsCount').value = topics.length;
         });
+    }
+});
 
-        // Handle file selection and drag & drop
-        function handleFileSelect(input) {
-            const fileInfo = document.getElementById('fileInfo');
-            const fileInfoText = document.getElementById('fileInfoText');
-            
-            if (input.files && input.files[0]) {
-                const file = input.files[0];
-                const fileSize = (file.size / 1024 / 1024).toFixed(2);
-                
-                fileInfoText.innerHTML = `
-                    <i class="fas fa-file-check"></i> 
-                    <strong>${file.name}</strong> (${fileSize} MB)
-                `;
-                fileInfo.style.display = 'block';
-                
-                // Update upload area appearance
-                const uploadArea = document.getElementById('fileUploadArea');
-                uploadArea.style.borderColor = '#27ae60';
-                uploadArea.style.background = 'rgba(39, 174, 96, 0.05)';
-            } else {
-                fileInfo.style.display = 'none';
-                resetFileUploadArea();
-            }
-        }
-
-        function resetFileUploadArea() {
-            const uploadArea = document.getElementById('fileUploadArea');
-            uploadArea.style.borderColor = '#bdc3c7';
-            uploadArea.style.background = '#f8f9fa';
-        }
-
-        // Drag and drop functionality
-        const fileUploadArea = document.getElementById('fileUploadArea');
+// Handle file selection and drag & drop
+function handleFileSelect(input) {
+    const fileInfo = document.getElementById('fileInfo');
+    const fileInfoText = document.getElementById('fileInfoText');
+    
+    if (input.files && input.files[0]) {
+        const file = input.files[0];
+        const fileSize = (file.size / 1024 / 1024).toFixed(2);
         
+        fileInfoText.innerHTML = `
+            <i class="fas fa-file-check"></i> 
+            <strong>${file.name}</strong> (${fileSize} MB)
+        `;
+        fileInfo.style.display = 'block';
+        
+        // Update upload area appearance
+        const uploadArea = document.getElementById('fileUploadArea');
+        uploadArea.style.borderColor = '#27ae60';
+        uploadArea.style.background = 'rgba(39, 174, 96, 0.05)';
+    } else {
+        fileInfo.style.display = 'none';
+        resetFileUploadArea();
+    }
+}
+
+function resetFileUploadArea() {
+    const uploadArea = document.getElementById('fileUploadArea');
+    uploadArea.style.borderColor = '#bdc3c7';
+    uploadArea.style.background = '#f8f9fa';
+}
+
+// Drag and drop functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const fileUploadArea = document.getElementById('fileUploadArea');
+    
+    if (fileUploadArea) {
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             fileUploadArea.addEventListener(eventName, preventDefaults, false);
         });
@@ -110,9 +123,14 @@
             document.getElementById('notesFile').files = files;
             handleFileSelect(document.getElementById('notesFile'));
         }
+    }
+});
 
-        // Form submission
-        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+// Form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const uploadForm = document.getElementById('uploadForm');
+    if (uploadForm) {
+        uploadForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const submitBtn = document.getElementById('submitBtn');
@@ -132,7 +150,7 @@
             // Collect form data
             const unitData = {
                 subject: subject,
-                subjectDisplay: subjectSelect === 'new' ? newSubjectName : subjectSelect.charAt(0).toUpperCase() + subjectSelect.slice(1),
+                subjectDisplay: subjectSelect === 'new' ? newSubjectName : getSubjectDisplayName(subjectSelect),
                 unitNumber: document.getElementById('unitNumber').value,
                 unitIcon: document.getElementById('unitIcon').value || 'fas fa-book',
                 unitTitle: document.getElementById('unitTitle').value,
@@ -156,115 +174,179 @@
                 resetSubmitButton();
             }, 1500);
         });
+    }
+});
 
-        function resetSubmitButton() {
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = '<i class="fas fa-save"></i> Create Unit';
+function getSubjectDisplayName(subjectKey) {
+    const displayNames = {
+        'tamil': 'Tamil',
+        'english': 'English',
+        'statistics': 'Statistics',
+        'java': 'Java',
+        'html': 'HTML'
+    };
+    return displayNames[subjectKey] || subjectKey.charAt(0).toUpperCase() + subjectKey.slice(1);
+}
+
+function resetSubmitButton() {
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<i class="fas fa-save"></i> Create Unit';
+}
+
+function saveUnitData(unitData) {
+    try {
+        // Get existing data or initialize empty object
+        let notesData = JSON.parse(localStorage.getItem('notesData') || '{}');
+        
+        // Initialize subject if it doesn't exist
+        if (!notesData[unitData.subject]) {
+            notesData[unitData.subject] = {
+                displayName: unitData.subjectDisplay,
+                units: []
+            };
         }
 
-        function saveUnitData(unitData) {
-            try {
-                // Get existing data
-                let existingData = JSON.parse(localStorage.getItem('notesData') || '{}');
-                
-                // Initialize subject if it doesn't exist
-                if (!existingData[unitData.subject]) {
-                    existingData[unitData.subject] = {
-                        displayName: unitData.subjectDisplay,
-                        units: []
-                    };
-                }
+        // Generate unit number if not provided
+        const unitNumber = unitData.unitNumber || (notesData[unitData.subject].units.length + 1);
 
-                // Add unit data
-                const unit = {
-                    id: Date.now(),
-                    number: unitData.unitNumber || existingData[unitData.subject].units.length + 1,
-                    icon: unitData.unitIcon,
-                    title: unitData.unitTitle,
-                    description: unitData.unitDescription,
-                    topics: unitData.unitTopics,
-                    topicsCount: unitData.topicsCount,
-                    pagesCount: unitData.pagesCount,
-                    fileName: unitData.file ? unitData.file.name : null,
-                    fileSize: unitData.file ? unitData.file.size : null,
-                    createdAt: new Date().toISOString()
-                };
+        // Create unit object
+        const unit = {
+            id: Date.now(),
+            number: unitNumber,
+            icon: unitData.unitIcon,
+            title: unitData.unitTitle,
+            description: unitData.unitDescription,
+            topics: unitData.unitTopics,
+            topicsCount: parseInt(unitData.topicsCount) || unitData.unitTopics.split(',').filter(t => t.trim()).length,
+            pagesCount: parseInt(unitData.pagesCount),
+            fileName: unitData.file ? unitData.file.name : null,
+            fileSize: unitData.file ? unitData.file.size : null,
+            createdAt: new Date().toISOString()
+        };
 
-                existingData[unitData.subject].units.push(unit);
-                
-                // Save back to localStorage
-                localStorage.setItem('notesData', JSON.stringify(existingData));
-                
-                // Update stats
-                updateStats();
-                
-                showSuccess(`Unit "${unitData.unitTitle}" created successfully! It will appear on the student page.`);
-                resetForm();
-                
-            } catch (error) {
-                showError('Error saving data: ' + error.message);
-            }
-        }
+        // Add unit to subject
+        notesData[unitData.subject].units.push(unit);
+        
+        // Sort units by number
+        notesData[unitData.subject].units.sort((a, b) => parseInt(a.number) - parseInt(b.number));
+        
+        // Save to localStorage
+        localStorage.setItem('notesData', JSON.stringify(notesData));
+        
+        // Update stats
+        updateStats();
+        
+        showSuccess(`Unit "${unitData.unitTitle}" created successfully! It will appear on the student page.`);
+        resetForm();
+        
+        // Update subject selector for future use
+        updateSubjectSelector();
+        
+    } catch (error) {
+        console.error('Error saving unit data:', error);
+        showError('Error saving data: ' + error.message);
+    }
+}
 
-        function updateStats() {
-            let stats = JSON.parse(localStorage.getItem('platformStats') || '{}');
-            
-            if (!stats.unitsCreated) stats.unitsCreated = 0;
-            if (!stats.totalUploads) stats.totalUploads = 0;
-            
-            stats.unitsCreated++;
-            stats.totalUploads++;
-            stats.lastUpdate = new Date().toISOString();
-            
-            localStorage.setItem('platformStats', JSON.stringify(stats));
-        }
+function updateSubjectSelector() {
+    const subjectSelect = document.getElementById('subjectSelect');
+    const notesData = JSON.parse(localStorage.getItem('notesData') || '{}');
+    
+    // Clear existing options except default and "create new"
+    const existingOptions = Array.from(subjectSelect.options);
+    const defaultOption = existingOptions[0];
+    const newOption = existingOptions[existingOptions.length - 1];
+    
+    subjectSelect.innerHTML = '';
+    subjectSelect.appendChild(defaultOption);
+    
+    // Add subjects from localStorage
+    Object.keys(notesData).forEach(subjectKey => {
+        const option = document.createElement('option');
+        option.value = subjectKey;
+        option.textContent = notesData[subjectKey].displayName;
+        subjectSelect.appendChild(option);
+    });
+    
+    // Re-add "create new" option
+    subjectSelect.appendChild(newOption);
+}
 
-        function showSuccess(message) {
-            const successMsg = document.getElementById('successMessage');
-            successMsg.textContent = message;
-            successMsg.style.display = 'block';
-            document.getElementById('errorMessage').style.display = 'none';
-            
-            // Auto-hide after 5 seconds
-            setTimeout(() => {
-                successMsg.style.display = 'none';
-            }, 5000);
-        }
+function updateStats() {
+    let stats = JSON.parse(localStorage.getItem('platformStats') || '{}');
+    
+    if (!stats.unitsCreated) stats.unitsCreated = 0;
+    if (!stats.totalUploads) stats.totalUploads = 0;
+    
+    stats.unitsCreated++;
+    stats.totalUploads++;
+    stats.lastUpdate = new Date().toISOString();
+    
+    localStorage.setItem('platformStats', JSON.stringify(stats));
+}
 
-        function showError(message) {
-            const errorMsg = document.getElementById('errorMessage');
-            errorMsg.textContent = message;
-            errorMsg.style.display = 'block';
-            document.getElementById('successMessage').style.display = 'none';
-        }
+function showSuccess(message) {
+    const successMsg = document.getElementById('successMessage');
+    if (successMsg) {
+        successMsg.textContent = message;
+        successMsg.style.display = 'block';
+        const errorMsg = document.getElementById('errorMessage');
+        if (errorMsg) errorMsg.style.display = 'none';
+        
+        // Auto-hide after 5 seconds
+        setTimeout(() => {
+            successMsg.style.display = 'none';
+        }, 5000);
+    }
+}
 
-        function resetForm() {
-            document.getElementById('uploadForm').reset();
-            document.getElementById('fileInfo').style.display = 'none';
-            document.getElementById('newSubjectGroup').style.display = 'none';
-            document.getElementById('topicsCount').value = '';
-            resetFileUploadArea();
-        }
+function showError(message) {
+    const errorMsg = document.getElementById('errorMessage');
+    if (errorMsg) {
+        errorMsg.textContent = message;
+        errorMsg.style.display = 'block';
+        const successMsg = document.getElementById('successMessage');
+        if (successMsg) successMsg.style.display = 'none';
+    }
+}
 
-        // Initialize page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set default icon if not provided
-            document.getElementById('unitIcon').placeholder = 'Default: fas fa-book';
-        });
+function resetForm() {
+    const uploadForm = document.getElementById('uploadForm');
+    if (uploadForm) {
+        uploadForm.reset();
+        document.getElementById('fileInfo').style.display = 'none';
+        document.getElementById('newSubjectGroup').style.display = 'none';
+        document.getElementById('topicsCount').value = '';
+        resetFileUploadArea();
+    }
+}
 
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+    // Set default icon if not provided
+    const unitIcon = document.getElementById('unitIcon');
+    if (unitIcon) {
+        unitIcon.placeholder = 'Default: fas fa-book';
+    }
+    
+    // Initialize subject selector with existing subjects
+    updateSubjectSelector();
+});
 
-        // Manage Section Functions
+// Manage Section Functions
 function refreshManageData() {
     loadManageData();
     updateSubjectFilter();
     
     // Add refresh animation
     const refreshBtn = document.querySelector('.refresh-btn i');
-    refreshBtn.style.animation = 'spin 1s linear';
-    setTimeout(() => {
-        refreshBtn.style.animation = '';
-    }, 1000);
+    if (refreshBtn) {
+        refreshBtn.style.animation = 'spin 1s linear';
+        setTimeout(() => {
+            refreshBtn.style.animation = '';
+        }, 1000);
+    }
 }
 
 function loadManageData() {
@@ -272,16 +354,18 @@ function loadManageData() {
     const container = document.getElementById('manageDataContainer');
     const noDataMessage = document.getElementById('noDataMessage');
     
+    if (!container) return;
+    
     // Clear existing content
     container.innerHTML = '';
     
     if (Object.keys(notesData).length === 0) {
-        noDataMessage.style.display = 'block';
+        if (noDataMessage) noDataMessage.style.display = 'block';
         container.style.display = 'none';
         return;
     }
     
-    noDataMessage.style.display = 'none';
+    if (noDataMessage) noDataMessage.style.display = 'none';
     container.style.display = 'block';
     
     // Create subject cards
@@ -295,6 +379,9 @@ function loadManageData() {
 function updateSubjectFilter() {
     const notesData = JSON.parse(localStorage.getItem('notesData') || '{}');
     const filter = document.getElementById('subjectFilter');
+    
+    if (!filter) return;
+    
     const currentValue = filter.value;
     
     // Clear existing options except "All Subjects"
@@ -397,12 +484,17 @@ function createUnitHTML(subjectKey, unit) {
 
 function toggleSubject(subjectKey) {
     const card = document.querySelector(`[data-subject="${subjectKey}"]`);
-    card.classList.toggle('expanded');
+    if (card) card.classList.toggle('expanded');
 }
 
 function filterContent() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const subjectFilter = document.getElementById('subjectFilter').value;
+    const searchInput = document.getElementById('searchInput');
+    const subjectFilter = document.getElementById('subjectFilter');
+    
+    if (!searchInput || !subjectFilter) return;
+    
+    const searchTerm = searchInput.value.toLowerCase();
+    const subjectFilterValue = subjectFilter.value;
     const subjectCards = document.querySelectorAll('.subject-card');
     
     subjectCards.forEach(card => {
@@ -410,7 +502,7 @@ function filterContent() {
         const subjectName = card.querySelector('.subject-name').textContent.toLowerCase();
         const unitItems = card.querySelectorAll('.unit-item');
         
-        let subjectMatch = !subjectFilter || subjectKey === subjectFilter;
+        let subjectMatch = !subjectFilterValue || subjectKey === subjectFilterValue;
         let searchMatch = !searchTerm || subjectName.includes(searchTerm);
         
         // Check units for search match
@@ -465,7 +557,8 @@ function editUnit(subjectKey, unitId) {
 }
 
 function closeEditModal() {
-    document.getElementById('editModal').classList.remove('active');
+    const editModal = document.getElementById('editModal');
+    if (editModal) editModal.classList.remove('active');
 }
 
 function saveUnitEdit() {
@@ -508,9 +601,14 @@ function saveUnitEdit() {
 }
 
 // Auto-calculate topics count in edit form
-document.getElementById('editUnitTopics').addEventListener('input', function() {
-    const topics = this.value.split(',').filter(topic => topic.trim() !== '');
-    document.getElementById('editTopicsCount').value = topics.length;
+document.addEventListener('DOMContentLoaded', function() {
+    const editUnitTopics = document.getElementById('editUnitTopics');
+    if (editUnitTopics) {
+        editUnitTopics.addEventListener('input', function() {
+            const topics = this.value.split(',').filter(topic => topic.trim() !== '');
+            document.getElementById('editTopicsCount').value = topics.length;
+        });
+    }
 });
 
 // File Replace Functions
@@ -528,7 +626,8 @@ function replaceFile(subjectKey, unitId) {
 }
 
 function closeReplaceFileModal() {
-    document.getElementById('replaceFileModal').classList.remove('active');
+    const replaceFileModal = document.getElementById('replaceFileModal');
+    if (replaceFileModal) replaceFileModal.classList.remove('active');
 }
 
 function handleReplaceFileSelect(input) {
@@ -557,8 +656,10 @@ function handleReplaceFileSelect(input) {
 
 function resetReplaceFileUploadArea() {
     const uploadArea = document.getElementById('replaceFileUploadArea');
-    uploadArea.style.borderColor = '#bdc3c7';
-    uploadArea.style.background = '#f8f9fa';
+    if (uploadArea) {
+        uploadArea.style.borderColor = '#bdc3c7';
+        uploadArea.style.background = '#f8f9fa';
+    }
 }
 
 function saveFileReplace() {
@@ -618,6 +719,7 @@ function deleteUnit(subjectKey, unitId) {
         // Refresh display
         loadManageData();
         updateSubjectFilter();
+        updateSubjectSelector();
         
         alert('Unit deleted successfully!');
     }
@@ -639,6 +741,7 @@ function deleteSubject(subjectKey) {
         // Refresh display
         loadManageData();
         updateSubjectFilter();
+        updateSubjectSelector();
         
         alert('Subject deleted successfully!');
     }
@@ -652,159 +755,6 @@ function updateDeleteStats(unitsDeleted = 1) {
     stats.lastUpdate = new Date().toISOString();
     
     localStorage.setItem('platformStats', JSON.stringify(stats));
-}
-
-// Bulk Operations
-function selectAllUnits() {
-    const checkboxes = document.querySelectorAll('.unit-checkbox');
-    const selectAllCheckbox = document.getElementById('selectAll');
-    
-    checkboxes.forEach(checkbox => {
-        checkbox.checked = selectAllCheckbox.checked;
-    });
-    
-    updateBulkActions();
-}
-
-function updateBulkActions() {
-    const selectedUnits = document.querySelectorAll('.unit-checkbox:checked');
-    const bulkActions = document.getElementById('bulkActions');
-    
-    if (selectedUnits.length > 0) {
-        bulkActions.style.display = 'block';
-        document.getElementById('selectedCount').textContent = selectedUnits.length;
-    } else {
-        bulkActions.style.display = 'none';
-    }
-}
-
-function bulkDelete() {
-    const selectedUnits = document.querySelectorAll('.unit-checkbox:checked');
-    
-    if (selectedUnits.length === 0) return;
-    
-    if (confirm(`Are you sure you want to delete ${selectedUnits.length} selected units? This action cannot be undone.`)) {
-        const notesData = JSON.parse(localStorage.getItem('notesData') || '{}');
-        
-        selectedUnits.forEach(checkbox => {
-            const unitItem = checkbox.closest('.unit-item');
-            const unitId = parseInt(unitItem.getAttribute('data-unit-id'));
-            const subjectCard = checkbox.closest('.subject-card');
-            const subjectKey = subjectCard.getAttribute('data-subject');
-            
-            // Remove unit from data
-            notesData[subjectKey].units = notesData[subjectKey].units.filter(u => u.id !== unitId);
-            
-            // Remove empty subjects
-            if (notesData[subjectKey].units.length === 0) {
-                delete notesData[subjectKey];
-            }
-        });
-        
-        localStorage.setItem('notesData', JSON.stringify(notesData));
-        
-        // Update stats
-        updateDeleteStats(selectedUnits.length);
-        
-        // Refresh display
-        loadManageData();
-        updateSubjectFilter();
-        
-        alert(`${selectedUnits.length} units deleted successfully!`);
-    }
-}
-
-// Export/Import Functions
-function exportData() {
-    const notesData = JSON.parse(localStorage.getItem('notesData') || '{}');
-    const platformStats = JSON.parse(localStorage.getItem('platformStats') || '{}');
-    
-    const exportData = {
-        notesData,
-        platformStats,
-        exportDate: new Date().toISOString(),
-        version: '1.0'
-    };
-    
-    const dataStr = JSON.stringify(exportData, null, 2);
-    const dataBlob = new Blob([dataStr], { type: 'application/json' });
-    
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(dataBlob);
-    link.download = `notes-dock-backup-${new Date().toISOString().split('T')[0]}.json`;
-    link.click();
-    
-    alert('Data exported successfully!');
-}
-
-function importData() {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = '.json';
-    
-    input.onchange = function(e) {
-        const file = e.target.files[0];
-        if (!file) return;
-        
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            try {
-                const importData = JSON.parse(e.target.result);
-                
-                if (!importData.notesData) {
-                    alert('Invalid backup file format');
-                    return;
-                }
-                
-                if (confirm('This will replace all existing data. Are you sure you want to continue?')) {
-                    localStorage.setItem('notesData', JSON.stringify(importData.notesData));
-                    
-                    if (importData.platformStats) {
-                        localStorage.setItem('platformStats', JSON.stringify(importData.platformStats));
-                    }
-                    
-                    // Refresh display
-                    loadManageData();
-                    updateSubjectFilter();
-                    
-                    alert('Data imported successfully!');
-                }
-            } catch (error) {
-                alert('Error reading backup file: ' + error.message);
-            }
-        };
-        
-        reader.readAsText(file);
-    };
-    
-    input.click();
-}
-
-// Search and Sort Functions
-function sortUnits(sortBy) {
-    const notesData = JSON.parse(localStorage.getItem('notesData') || '{}');
-    
-    Object.keys(notesData).forEach(subjectKey => {
-        notesData[subjectKey].units.sort((a, b) => {
-            switch (sortBy) {
-                case 'title':
-                    return a.title.localeCompare(b.title);
-                case 'number':
-                    return parseInt(a.number) - parseInt(b.number);
-                case 'created':
-                    return new Date(a.createdAt) - new Date(b.createdAt);
-                case 'updated':
-                    return new Date(b.updatedAt || b.createdAt) - new Date(a.updatedAt || a.createdAt);
-                case 'pages':
-                    return parseInt(b.pagesCount) - parseInt(a.pagesCount);
-                default:
-                    return 0;
-            }
-        });
-    });
-    
-    localStorage.setItem('notesData', JSON.stringify(notesData));
-    loadManageData();
 }
 
 // Initialize manage section when tab is switched
@@ -823,62 +773,40 @@ function setupReplaceFileDragDrop() {
     if (!replaceFileUploadArea) return;
     
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
-        replaceFileUploadArea.addEventListener(eventName, preventDefaults, false);
+        replaceFileUploadArea.addEventListener(eventName, function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }, false);
     });
 
     ['dragenter', 'dragover'].forEach(eventName => {
-        replaceFileUploadArea.addEventListener(eventName, highlightReplace, false);
+        replaceFileUploadArea.addEventListener(eventName, function() {
+            replaceFileUploadArea.classList.add('dragover');
+        }, false);
     });
 
     ['dragleave', 'drop'].forEach(eventName => {
-        replaceFileUploadArea.addEventListener(eventName, unhighlightReplace, false);
+        replaceFileUploadArea.addEventListener(eventName, function() {
+            replaceFileUploadArea.classList.remove('dragover');
+        }, false);
     });
 
-    replaceFileUploadArea.addEventListener('drop', handleReplaceDrop, false);
+    replaceFileUploadArea.addEventListener('drop', function(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        
+        document.getElementById('replaceFile').files = files;
+        handleReplaceFileSelect(document.getElementById('replaceFile'));
+    }, false);
 }
-
-function highlightReplace(e) {
-    document.getElementById('replaceFileUploadArea').classList.add('dragover');
-}
-
-function unhighlightReplace(e) {
-    document.getElementById('replaceFileUploadArea').classList.remove('dragover');
-}
-
-function handleReplaceDrop(e) {
-    const dt = e.dataTransfer;
-    const files = dt.files;
-    
-    document.getElementById('replaceFile').files = files;
-    handleReplaceFileSelect(document.getElementById('replaceFile'));
-}
-
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Check if we're on manage section and initialize
-    if (typeof showAdminSection === 'function') {
-        // Override the original showAdminSection to initialize manage section
-        const originalShowAdminSection = window.showAdminSection;
-        window.showAdminSection = function(sectionName) {
-            originalShowAdminSection(sectionName);
-            if (sectionName === 'manage') {
-                setTimeout(() => initializeManageSection(), 100);
-            }
-        };
-    }
-});
-
 
 // Overview Section Functions
-
-// Initialize overview when tab is loaded
 function initializeOverview() {
     refreshOverviewStats();
     loadRecentActivity();
     updateLastUpdated();
 }
 
-// Refresh all statistics
 function refreshOverviewStats() {
     calculateAndDisplayStats();
     loadRecentActivity();
@@ -894,7 +822,6 @@ function refreshOverviewStats() {
     }
 }
 
-// Calculate and display all statistics
 function calculateAndDisplayStats() {
     const notesData = JSON.parse(localStorage.getItem('notesData') || '{}');
     const platformStats = JSON.parse(localStorage.getItem('platformStats') || '{}');
