@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download free student notes for Tamil, English, Statistics, Java, HTML and more.">
+    <title>Notes Dock</title>
+    <link rel="icon" href="/NotesDock/frontend/assets/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/subject.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-brand">
+            <img src="/NotesDock/frontend/assets/logo.png" alt="Notes Dock Logo" class="header-logo">
+            <h1 class="site-title">Notes Dock</h1>
+        </div>
+        <nav class="header-nav">
+            <a href="#about"><b>About</b></a>
+            <a href="#contact"><b>Contact</b></a>
+            <a href="#" onclick="openAdminModal(); return false;"><span class="footer-contact-icon"><i
+                        class="fa-solid fa-user-tie"></i></span><b> Admin</b></a>
+        </nav>
+    </header>
+    <!-- Admin Modal -->
+    <div class="admin-modal-overlay" id="admin-modal-overlay" aria-hidden="true">
+        <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="admin-modal-title">
+            <div class="admin-modal-header">
+                <button class="admin-close-btn" onclick="closeAdminModal()" aria-label="Close admin panel">
+                    ×
+                </button>
+                <h2 class="admin-modal-title" id="admin-modal-title">Admin Panel</h2>
+                <p class="admin-modal-subtitle">Please enter your credentials to continue</p>
+            </div>
+            <div class="admin-modal-body">
+                <div class="admin-error" id="admin-error" role="alert" aria-live="assertive">
+                    Invalid username or password. Please try again.
+                </div>
+                <form id="admin-form">
+                    <div class="admin-form-group">
+                        <label for="admin-username" class="admin-label">Username</label>
+                        <input type="text" id="admin-username" name="username" class="admin-input"
+                            placeholder="Enter your username" required>
+                    </div>
+                    <div class="admin-form-group">
+                        <label for="admin-password" class="admin-label">Password</label>
+                        <input type="password" id="admin-password" name="password" class="admin-input"
+                            placeholder="Enter your password" required>
+                    </div>
+                    <div class="admin-buttons">
+                        <button type="button" class="admin-btn admin-btn-secondary" onclick="closeAdminModal()">
+                            Cancel
+                        </button>
+                        <button type="submit" class="admin-btn admin-btn-primary" onclick="handleAdminLogin(event)" >
+                            Login
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <main class="main-content">
+
+
+        <!-- Subject Header -->
+        <div class="subject-header">
+            <h1 class="subject-title" id="subject-title">Choose a Subject</h1>
+            <p class="subject-subtitle" id="subject-subtitle">Select a subject below to view its units</p>
+        </div>
+
+        <!-- Subject Selection -->
+        <div class="subject-selector">
+            <div class="subject-tabs">
+                <button class="subject-tab active" onclick="showSubject('tamil')">Tamil</button>
+                <button class="subject-tab" onclick="showSubject('english')">English</button>
+                <button class="subject-tab" onclick="showSubject('statistics')">Statistics</button>
+                <button class="subject-tab" onclick="showSubject('java')">Java</button>
+                <button class="subject-tab" onclick="showSubject('html')">HTML</button>
+            </div>
+        </div>
+
+       <!-- Tamil Units -->
+    <div id="tamil-section" class="subject-section tamil active">
+        <div class="units-grid">
+            <!-- Content will be loaded dynamically by JavaScript -->
+        </div>
+    </div>
+        <!-- English Units -->
+        <div id="english-section" class="subject-section english">
+            <div class="units-grid">
+                <!-- Content will be loaded dynamically by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Statistics Units -->
+        <div id="statistics-section" class="subject-section statistics">
+            <div class="units-grid">
+               <!-- Content will be loaded dynamically by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Java Units -->
+        <div id="java-section" class="subject-section java">
+            <div class="units-grid">
+                <div class="unit-card">
+                   <!-- Content will be loaded dynamically by JavaScript -->
+            </div>
+        </div>
+
+        <!-- HTML Units -->
+        <div id="html-section" class="subject-section html">
+            <div class="units-grid">
+                <!-- Content will be loaded dynamically by JavaScript -->
+            </div>
+        </div>
+    </main>
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 id="about"><i class="fa-solid fa-circle-info" style="margin-right: 0.5rem;"></i> About Us</h3>
+                    <p>Download comprehensive study notes and excel in your academic journey.We built Notes Dock with a
+                        simple yet powerful mission: to make learning smarter,
+                        sharing easier, and knowledge accessible to everyone.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h3 id="contact"> <i class="fa-regular fa-address-book" style="margin-right: 0.5rem;"></i>Contact
+                        Info</h3>
+                    <div class="footer-contact">
+                        <a href="mailto:info@noteshub.com" class="footer-contact-item">
+                            <span class="footer-contact-icon">
+                                <i class="fa-solid fa-envelope fa-beat"></i>
+                            </span>
+                            notesdock143@gmail.com
+                        </a>
+                        <a href="https://instagram.com/noteshub" class="footer-contact-item">
+                            <span class="footer-contact-icon">
+                                <i class="fa-brands fa-instagram fa-beat"></i>
+                            </span>
+                            notes_dock_ig
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>⏰ 24/7 Support Available</p>
+                <p>&copy; 2025 Notes Dock. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="./js/subject.js"></script>
+</body>
+</html>
