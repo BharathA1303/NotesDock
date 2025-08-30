@@ -17,7 +17,7 @@ const defaultSubjectInfo = {
         subtitle: 'Java programming concepts and practical implementation'
     },
     html: {
-        title: 'HTML & Web Development',
+        title: 'Web Technology',
         subtitle: 'HTML markup language and web development fundamentals'
     }
 };
@@ -140,9 +140,17 @@ document.addEventListener('DOMContentLoaded', function() {
 function updateSubjectTabs() {
     const notesData = JSON.parse(localStorage.getItem('notesData') || '{}');
     const tabs = document.querySelectorAll('.subject-tab');
+    const reverseTabMapping = {
+    'Tamil': 'tamil',
+    'English': 'english', 
+    'Statistics': 'statistics',
+    'Java': 'java',
+    'Web Technology': 'html'
+};
+
     
     tabs.forEach(tab => {
-        const subjectName = tab.textContent.toLowerCase();
+        const subjectName = reverseTabMapping[tab.textContent];
         const hasUnits = notesData[subjectName] && notesData[subjectName].units && notesData[subjectName].units.length > 0;
         
         // Add visual indicator for subjects with no content
@@ -179,10 +187,18 @@ function showSubject(subjectName) {
         }
     }
 
-    // Add active class to selected tab
+    // Add active class to selected tab using proper mapping
+    const tabMapping = {
+        'tamil': 'Tamil',
+        'english': 'English', 
+        'statistics': 'Statistics',
+        'java': 'Java',
+        'html': 'Web Technology'
+    };
+
     const tabs = document.querySelectorAll('.subject-tab');
     tabs.forEach(tab => {
-        if (tab.textContent.toLowerCase() === subjectName) {
+        if (tab.textContent === tabMapping[subjectName]) {
             tab.classList.add('active');
         }
     });
@@ -379,55 +395,9 @@ document.addEventListener('keydown', function(e) {
 
     // Back to home with Escape
     if (e.key === 'Escape') {
-        window.location.href = 'notes-2nd.html';
+        window.location.href = '';
     }
 });
-
-// Search functionality
-function searchUnits(searchTerm) {
-    const activeSection = document.querySelector('.subject-section.active');
-    if (!activeSection) return;
-    
-    const unitCards = activeSection.querySelectorAll('.unit-card');
-
-    unitCards.forEach(card => {
-        const title = card.querySelector('.unit-title')?.textContent.toLowerCase() || '';
-        const description = card.querySelector('.unit-description')?.textContent.toLowerCase() || '';
-        const topics = card.querySelector('.unit-topics')?.textContent.toLowerCase() || '';
-
-        const isVisible = title.includes(searchTerm.toLowerCase()) ||
-            description.includes(searchTerm.toLowerCase()) ||
-            topics.includes(searchTerm.toLowerCase());
-
-        card.style.display = isVisible ? 'block' : 'none';
-    });
-}
-
-// Performance optimization
-function lazyLoadContent() {
-    // Implement lazy loading for heavy content
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-
-    images.forEach(img => imageObserver.observe(img));
-}
-
-// Initialize performance optimizations
-document.addEventListener('DOMContentLoaded', lazyLoadContent);
-
-// Print functionality
-function printUnits() {
-    window.print();
-}
 
 // Add keyboard shortcuts info
 function showKeyboardShortcuts() {
@@ -456,7 +426,14 @@ document.addEventListener('visibilitychange', function() {
         // Page became visible - refresh current subject
         const activeTab = document.querySelector('.subject-tab.active');
         if (activeTab) {
-            const currentSubject = activeTab.textContent.toLowerCase();
+            const reverseTabMapping = {
+             'Tamil': 'tamil',
+              'English': 'english', 
+    'Statistics': 'statistics',
+    'Java': 'java',
+    'Web Technology': 'html'
+};
+const currentSubject = reverseTabMapping[activeTab.textContent];
             updateSubjectTabs();
             showSubject(currentSubject);
         }
@@ -468,7 +445,14 @@ setInterval(() => {
     if (!document.hidden) {
         const activeTab = document.querySelector('.subject-tab.active');
         if (activeTab) {
-            const currentSubject = activeTab.textContent.toLowerCase();
+            const reverseTabMapping = {
+    'Tamil': 'tamil',
+    'English': 'english', 
+    'Statistics': 'statistics',
+    'Java': 'java',
+    'Web Technology': 'html'
+};
+        const currentSubject = reverseTabMapping[activeTab.textContent];
             updateSubjectTabs();
             // Silently refresh current subject content
             const section = document.getElementById(`${currentSubject}-section`);
